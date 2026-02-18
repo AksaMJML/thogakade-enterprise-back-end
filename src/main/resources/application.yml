@@ -1,6 +1,9 @@
 spring :
   datasource :
-    url : jdbc:mysql://localhost:3306/thogakade_enterprsie
-    username : "root"
+    url : jdbc:mysql://localhost:3306/thogakade
+    username : root
     password : 741897
 
+  flyway:
+    enabled : true
+    baseline-on-migrate: true
