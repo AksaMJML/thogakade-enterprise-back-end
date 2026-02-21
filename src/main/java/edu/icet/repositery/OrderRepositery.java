@@ -8,7 +8,7 @@ import java.util.List;
 public interface OrderRepositery {
     boolean addOrder(OrderDTO orderDTO);
     boolean updateOrder(OrderDTO orderDTO);
-    boolean deleteorder(Integer id);
+    boolean deleteOrder(Integer id);
     OrderDTO searchById(Integer id);
     List<OrderDTO> getAll();
 }

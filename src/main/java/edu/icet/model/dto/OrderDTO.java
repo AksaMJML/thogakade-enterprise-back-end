@@ -16,5 +16,4 @@ public class OrderDTO {
     private String id;
     private Date date;
     private String cusId;
-
 }

@@ -4,7 +4,6 @@ import edu.icet.model.dto.CustomerDTO;
 import edu.icet.repositery.CustomerRepositery;
 import edu.icet.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
