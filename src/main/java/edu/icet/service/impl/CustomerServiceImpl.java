@@ -16,27 +16,29 @@ public class CustomerServiceImpl implements CustomerService {
     final CustomerRepositery repositery;
 
     @Override
-    public void addCustomer(CustomerDTO customerDTO) {
-        repositery.addCustomer(customerDTO);
-    }
-
-    @Override
-    public void updateCustomer(CustomerDTO customerDTO) {
+    public boolean addCustomer(CustomerDTO customerDTO) {
+        System.out.println(customerDTO.getId());
+      return   repositery.addCustomer(customerDTO);
 
     }
 
     @Override
-    public void deleteById(Integer id) {
-
+    public boolean updateCustomer(CustomerDTO customerDTO) {
+            return  false;
     }
 
     @Override
-    public CustomerDTO searchCustomer(Integer id) {
+    public boolean deleteById(String id) {
+        return false;
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String id) {
         return null;
     }
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        return List.of();
+        return repositery.getAll();
     }
 }

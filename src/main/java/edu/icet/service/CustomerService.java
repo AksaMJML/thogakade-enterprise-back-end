@@ -5,9 +5,9 @@ import edu.icet.model.dto.CustomerDTO;
 import java.util.List;
 
 public interface CustomerService {
-    void addCustomer(CustomerDTO customerDTO);
-    void updateCustomer(CustomerDTO customerDTO);
-    void deleteById(Integer id);
-    CustomerDTO searchCustomer(Integer id);
+    boolean addCustomer(CustomerDTO customerDTO);
+    boolean updateCustomer(CustomerDTO customerDTO);
+    boolean deleteById(String id);
+    CustomerDTO searchCustomer(String id);
     List<CustomerDTO> getAllCustomers();
 }

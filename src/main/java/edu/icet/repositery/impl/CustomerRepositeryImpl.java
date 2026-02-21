@@ -16,7 +16,7 @@ public class CustomerRepositeryImpl implements CustomerRepositery {
 
     @Override
     public boolean addCustomer(CustomerDTO customerDTO) {
-        String sql = "INSERT Table customer VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql ,
                 customerDTO.getId(),
                 customerDTO.getTitle(),
@@ -28,6 +28,7 @@ public class CustomerRepositeryImpl implements CustomerRepositery {
                 customerDTO.getProvince(),
                 customerDTO.getPostalCode()
         )>0;
+
     }
 
 
@@ -35,6 +36,9 @@ public class CustomerRepositeryImpl implements CustomerRepositery {
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
+        String sql = "UPDATE TABLE customer SET = (?,?,?,?,?,?,?,?) WHERE id = ?";
+//        jdbcTemplate.update(sql,
+//                )
         return false;
     }
 
