@@ -18,7 +18,7 @@ public class CustomerController {
     final CustomerService service;
 
     @PostMapping("/add")
-    public boolean addCustomer(CustomerDTO customerDTO){
+    public boolean addCustomer(@RequestBody CustomerDTO customerDTO){
          return service.addCustomer(customerDTO);
 
     }

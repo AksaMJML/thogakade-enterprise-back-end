@@ -17,7 +17,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public boolean addCustomer(CustomerDTO customerDTO) {
-        System.out.println(customerDTO.getId());
       return   repositery.addCustomer(customerDTO);
 
     }
