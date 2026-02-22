@@ -36,10 +36,18 @@ public class CustomerRepositeryImpl implements CustomerRepositery {
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
-        String sql = "UPDATE TABLE customer SET = (?,?,?,?,?,?,?,?) WHERE id = ?";
-//        jdbcTemplate.update(sql,
-//                )
-        return false;
+        String sql = "UPDATE customer SET CustTitle = ? , CustName = ? , DOB = ? , salary = ?, CustAddress = ? , City = ? , Province = ? , PostalCode = ? WHERE CustID = ? ";
+        return jdbcTemplate.update(sql,
+                customerDTO.getTitle(),
+                customerDTO.getName(),
+                customerDTO.getDob(),
+                customerDTO.getSalary(),
+                customerDTO.getAddress(),
+                customerDTO.getCity(),
+                customerDTO.getProvince(),
+                customerDTO.getPostalCode(),
+                customerDTO.getId()
+                )>0;
     }
 
     @Override

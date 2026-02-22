@@ -16,13 +16,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public boolean addCustomer(CustomerDTO customerDTO) {
-      return   repositery.addCustomer(customerDTO);
+      return repositery.addCustomer(customerDTO);
 
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
-            return  false;
+        return repositery.updateCustomer(customerDTO);
     }
 
     @Override

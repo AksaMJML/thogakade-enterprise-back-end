@@ -28,8 +28,9 @@ public class CustomerController {
       return service.getAllCustomers();
     }
 
-//    @PutMapping("/update")
-//    public void updateCustomer(CustomerDTO customerDTO){
-//        service.updateCustomer(customerDTO);
-//    }
+    @PutMapping("/update")
+    public boolean updateCustomer(@RequestBody CustomerDTO customerDTO){
+        return service.updateCustomer(customerDTO);
+    }
+
 }
