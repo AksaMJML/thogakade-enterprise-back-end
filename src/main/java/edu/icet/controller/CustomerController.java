@@ -33,4 +33,9 @@ public class CustomerController {
         return service.updateCustomer(customerDTO);
     }
 
+    @DeleteMapping("delete-by-id/{id}")
+    public boolean deleteById(String id){
+        return service.deleteById(id);
+    }
+
 }
