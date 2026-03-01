@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        return repositery.deldeteById(id);
     }
 
     @Override

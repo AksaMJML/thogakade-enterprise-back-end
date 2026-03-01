@@ -52,7 +52,24 @@ public class CustomerRepositeryImpl implements CustomerRepositery {
 
     @Override
     public boolean deldeteById(String id) {
-        return false;
+        String sql = "DELETE FROM customer";
+        return jdbcTemplate.update(sql , id)>1;
+    }
+
+    @Override
+    public CustomerDTO searchById(String id) {
+        String sql = "SELECT * FROM customer WHERE CustID = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new CustomerDTO(
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getDate(4),
+                rs.getDouble(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8),
+                rs.getString(9)
+                ), id);
     }
 
     @Override
