@@ -1,14 +1,22 @@
 package edu.icet.service.impl;
 
 import edu.icet.model.dto.OrderDTO;
+import edu.icet.repositery.OrderRepositery;
 import edu.icet.service.OrderService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
+@Service
 public class OrderServiceImpl implements OrderService {
+
+    private final OrderRepositery repositery;
+
     @Override
     public boolean addOrder(OrderDTO orderDTO) {
-        return false;
+        return repositery.addOrder(orderDTO);
     }
 
     @Override
