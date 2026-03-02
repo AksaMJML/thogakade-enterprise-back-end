@@ -36,6 +36,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+        return repositery.getAll();
     }
 }
