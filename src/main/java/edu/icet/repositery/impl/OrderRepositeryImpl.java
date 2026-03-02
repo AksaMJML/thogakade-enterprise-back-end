@@ -26,7 +26,12 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public boolean updateOrder(OrderDTO orderDTO) {
-        return false;
+        String sql = "UPDATE orders SET OrderDate = ?, CustID = ? WHERE OrderID = ?";
+        return jdbcTemplate.update(sql,
+                orderDTO.getDate(),
+                orderDTO.getCusId(),
+                orderDTO.getId()
+        )>0;
     }
 
     @Override
