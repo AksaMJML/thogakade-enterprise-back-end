@@ -3,10 +3,9 @@ package edu.icet.controller;
 import edu.icet.model.dto.OrderDTO;
 import edu.icet.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -15,8 +14,18 @@ public class OrderController {
 
     private final OrderService service;
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public boolean addOrder(@RequestBody OrderDTO orderDTO){
         return service.addOrder(orderDTO);
+    }
+
+    @GetMapping("/get")
+    public List<OrderDTO> getAll(){
+        return service.getAll();
+    }
+
+    @PutMapping("/update")
+    public boolean updateOrder(@RequestBody OrderDTO orderDTO){
+        return service.updateOrder(orderDTO);
     }
 }

@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean updateOrder(OrderDTO orderDTO) {
-        return false;
+        return repositery.updateOrder(orderDTO);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+        return repositery.getAll();
     }
 }

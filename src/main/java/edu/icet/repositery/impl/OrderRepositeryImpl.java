@@ -26,7 +26,12 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public boolean updateOrder(OrderDTO orderDTO) {
-        return false;
+        String sql = "UPDATE orders SET OrderDate = ?, CustID = ? WHERE OrderID = ?";
+        return jdbcTemplate.update(sql,
+                orderDTO.getDate(),
+                orderDTO.getCusId(),
+                orderDTO.getId()
+        )>0;
     }
 
     @Override
@@ -41,6 +46,13 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM orders";
+        return jdbcTemplate.query(sql , (rs, rowNum) ->
+            new OrderDTO(
+                    rs.getString(1),
+                    rs.getDate(2).toLocalDate(),
+                    rs.getString(3)
+            )
+        );
     }
 }
