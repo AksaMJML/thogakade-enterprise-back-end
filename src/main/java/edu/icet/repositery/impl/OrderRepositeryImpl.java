@@ -41,6 +41,13 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM orders";
+        return jdbcTemplate.query(sql , (rs, rowNum) ->
+            new OrderDTO(
+                    rs.getString(1),
+                    rs.getDate(2).toLocalDate(),
+                    rs.getString(3)
+            )
+        );
     }
 }
