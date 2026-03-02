@@ -23,4 +23,9 @@ public class OrderController {
     public List<OrderDTO> getAll(){
         return service.getAll();
     }
+
+    @PutMapping("/update")
+    public boolean updateOrder(@RequestBody OrderDTO orderDTO){
+        return service.updateOrder(orderDTO);
+    }
 }
