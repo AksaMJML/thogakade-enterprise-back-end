@@ -26,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public boolean deleteById(String id) {
-        return false;
+        return repositery.deleteById(id);
     }
 
     @Override

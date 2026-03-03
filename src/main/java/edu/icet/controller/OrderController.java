@@ -28,4 +28,9 @@ public class OrderController {
     public boolean updateOrder(@RequestBody OrderDTO orderDTO){
         return service.updateOrder(orderDTO);
     }
+
+    @DeleteMapping("delete-by-id/{id}")
+    public boolean deleteById(@PathVariable String id){
+        return service.deleteById(id);
+    }
 }
