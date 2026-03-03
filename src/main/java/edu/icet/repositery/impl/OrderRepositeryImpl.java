@@ -36,7 +36,8 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public boolean deleteOrder(Integer id) {
-        return false;
+        String sql = "DELETE FROM orders";
+        return jdbcTemplate.update(sql , id)>1;
     }
 
     @Override
