@@ -42,7 +42,13 @@ public class OrderRepositeryImpl implements OrderRepositery {
 
     @Override
     public OrderDTO searchById(String id) {
-        return null;
+        String sql = "SELECT * FROM orders WHERE OrderID = ?";
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new OrderDTO(
+                rs.getString(1),
+                rs.getDate(2).toLocalDate(),
+                rs.getString(3)
+                ), id);
+
     }
 
     @Override
