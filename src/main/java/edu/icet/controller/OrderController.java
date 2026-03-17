@@ -33,4 +33,9 @@ public class OrderController {
     public boolean deleteById(@PathVariable String id){
         return service.deleteById(id);
     }
+
+    @GetMapping("search-by-id/{id}")
+    public OrderDTO searchById(@PathVariable String id){
+        return service.searchById(id);
+    }
 }

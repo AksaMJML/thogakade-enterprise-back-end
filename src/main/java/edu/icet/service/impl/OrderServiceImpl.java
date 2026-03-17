@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO searchById(String id) {
-        return null;
+        return repositery.searchById(id);
     }
 
     @Override
