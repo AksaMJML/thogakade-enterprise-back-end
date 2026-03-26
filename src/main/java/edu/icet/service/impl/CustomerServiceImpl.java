@@ -1,4 +1,42 @@
 package edu.icet.service.impl;
 
-public class CustomerServiceImpl {
+import edu.icet.model.dto.CustomerDTO;
+import edu.icet.repositery.CustomerRepositery;
+import edu.icet.service.CustomerService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+@Service
+public class CustomerServiceImpl implements CustomerService {
+
+    final CustomerRepositery repositery;
+
+    @Override
+    public boolean addCustomer(CustomerDTO customerDTO) {
+      return repositery.addCustomer(customerDTO);
+
+    }
+
+    @Override
+    public boolean updateCustomer(CustomerDTO customerDTO) {
+        return repositery.updateCustomer(customerDTO);
+    }
+
+    @Override
+    public boolean deleteById(String id) {
+        return repositery.deldeteById(id);
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String id) {
+        return repositery.searchById(id);
+    }
+
+    @Override
+    public List<CustomerDTO> getAllCustomers() {
+        return repositery.getAll();
+    }
 }
