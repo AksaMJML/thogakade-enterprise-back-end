@@ -15,26 +15,26 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepositery itemRepositery;
     @Override
     public boolean addItem(ItemDTO itemDTO) {
-        return false;
+        return itemRepositery.addItem(itemDTO);
     }
 
     @Override
     public boolean updateItem(ItemDTO itemDTO) {
-        return false;
+        return itemRepositery.update(itemDTO);
     }
 
     @Override
     public boolean deleteItem(String id) {
-        return false;
+        return itemRepositery.deleteById(id);
     }
 
     @Override
     public ItemDTO serachItem(String id) {
-        return null;
+        return itemRepositery.searchById(id);
     }
 
     @Override
     public List<ItemDTO> getAll() {
-        return List.of();
+        return itemRepositery.getAll();
     }
 }
