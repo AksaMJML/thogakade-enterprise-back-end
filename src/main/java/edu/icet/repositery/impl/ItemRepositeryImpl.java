@@ -16,6 +16,17 @@ public class ItemRepositeryImpl implements ItemRepositery {
 
     private final JdbcTemplate template;
 
+
+    private ItemDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+        ItemDTO dto = new ItemDTO();
+        dto.setItemCode(rs.getString("ItemCode"));
+        dto.setDescription(rs.getString("Description"));
+        dto.setPackSize(rs.getString("PackSize"));
+        dto.setUnitPrice(rs.getDouble("UnitPrice"));
+        dto.setQtyOnHand(rs.getInt("QtyOnHand"));
+        return dto;
+    }
+
     @Override
     public boolean addItem(ItemDTO itemDTO) {
         String sql = "INSERT INTO items (ItemCode, Description, PackSize, UnitPrice, QtyOnHand) VALUES (?,?,?,?,?)";
@@ -58,13 +69,5 @@ public class ItemRepositeryImpl implements ItemRepositery {
         return template.query(sql, this::mapRow);
     }
 
-    private ItemDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-        ItemDTO dto = new ItemDTO();
-        dto.setItemCode(rs.getString("ItemCode"));
-        dto.setDescription(rs.getString("Description"));
-        dto.setPackSize(rs.getString("PackSize"));
-        dto.setUnitPrice(rs.getDouble("UnitPrice"));
-        dto.setQtyOnHand(rs.getInt("QtyOnHand"));
-        return dto;
-    }
+
 }
