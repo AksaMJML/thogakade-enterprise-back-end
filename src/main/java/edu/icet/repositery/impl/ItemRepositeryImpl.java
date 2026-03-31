@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -14,30 +16,58 @@ public class ItemRepositeryImpl implements ItemRepositery {
 
     private final JdbcTemplate template;
 
+
+    private ItemDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+        ItemDTO dto = new ItemDTO();
+        dto.setItemCode(rs.getString("ItemCode"));
+        dto.setDescription(rs.getString("Description"));
+        dto.setPackSize(rs.getString("PackSize"));
+        dto.setUnitPrice(rs.getDouble("UnitPrice"));
+        dto.setQtyOnHand(rs.getInt("QtyOnHand"));
+        return dto;
+    }
+
     @Override
     public boolean addItem(ItemDTO itemDTO) {
-        return template.update("INSERT INTO items VALUES (?,?,?,?,?)" ,
-                itemDTO.getS
-        );
+        String sql = "INSERT INTO items (ItemCode, Description, PackSize, UnitPrice, QtyOnHand) VALUES (?,?,?,?,?)";
+        return template.update(sql,
+                itemDTO.getItemCode(),
+                itemDTO.getDescription(),
+                itemDTO.getPackSize(),
+                itemDTO.getUnitPrice(),
+                itemDTO.getQtyOnHand()
+        ) > 0;
     }
 
     @Override
     public boolean update(ItemDTO itemDTO) {
-        return template.update("UPDATE TABLE items SET ");
+        String sql = "UPDATE items SET Description = ?, PackSize = ?, UnitPrice = ?, QtyOnHand = ? WHERE ItemCode = ?";
+        return template.update(sql,
+                itemDTO.getDescription(),
+                itemDTO.getPackSize(),
+                itemDTO.getUnitPrice(),
+                itemDTO.getQtyOnHand(),
+                itemDTO.getItemCode()
+        ) > 0;
     }
 
     @Override
     public boolean deleteById(String id) {
-        return template.update("DELETE FROM items WHERE code = ?");
+        String sql = "DELETE FROM items WHERE ItemCode = ?";
+        return template.update(sql, id) > 0;
     }
 
     @Override
     public ItemDTO searchById(String id) {
-        return null;
+        String sql = "SELECT * FROM items WHERE ItemCode = ?";
+        return template.queryForObject(sql, this::mapRow, id);
     }
 
     @Override
     public List<ItemDTO> getAll() {
-        return List.of();
+        String sql = "SELECT * FROM items";
+        return template.query(sql, this::mapRow);
     }
+
+
 }
